@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mimin.GG</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <div class="branding">
+        <img src="./assets/logo.png" alt="Logo Mimin.GG" />
+        <h1>Mimin.GG</h1>
+      </div>
+
+      <button class="theme-toggle" aria-label="Alternar modo claro/escuro">
+        <!-- light mode -->
+        <svg
+          class="icon-sun"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="24"
+          height="24"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+
+        <!-- dark mode -->
+        <svg
+          class="icon-moon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="24"
+          height="24"
+          style="display: none"
+        >
+          <path
+            d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div>
+        <p>Pergunte sobre estratégias, build e dicas para seus jogos!</p>
+
+        <form id="form">
+          <input
+            id="apiKey"
+            type="password"
+            placeholder="Informe a API KEY do Gemini"
+            required
+          />
+
+          <select id="gameSelect">
+            <option value="">Selecione um jogo</option>
+            <option value="valorant">Valorant</option>
+            <option value="lol">League of Legends</option>
+            <option value="cs">CS:GO</option>
+          </select>
+
+          <input
+            id="questionInput"
+            type="text"
+            placeholder="Ex: Melhor build para ADC..."
+            required
+          />
+
+          <button id="askButton">Perguntar</button>
+        </form>
+
+        <div id="aiResponse" class="hidden">
+          <div class="response-content"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+  <script src="./script.js"></script>
+  <script>
+    const toggleBtn = document.querySelector(".theme-toggle");
+    const body = document.body;
+    const iconSun = toggleBtn.querySelector(".icon-sun");
+    const iconMoon = toggleBtn.querySelector(".icon-moon");
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+
+      if (body.classList.contains("dark")) {
+        iconSun.style.display = "none";
+        iconMoon.style.display = "block";
+      } else {
+        iconSun.style.display = "block";
+        iconMoon.style.display = "none";
+      }
+    });
+  </script>
+</body>
+
+</html>

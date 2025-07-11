@@ -1,0 +1,313 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* cores light mode */
+  --bg-light: #f2f2f2; /* bege Claro */
+  --text-light: #333333; /* cinza Escuro */
+  --card-bg-light: #ffffff; /* branco */
+  --border-light: #cccccc; /* cinza Claro */
+  --input-bg-light: #ffffffcc; /* branco com transparência */
+  --accent: #9933cc; /* roxo */
+  --button-gradient: linear-gradient(245deg, #9933cc 0%, #66cc99 100%);
+  --response-bg-light: rgba(102, 204, 153, 0.1); /* verde leve */
+  --response-border-light: #66cc99; /* verde menta */
+
+  /* Cores dark mode */
+  --bg-dark: linear-gradient(to bottom right, #333333, #121214); /* cinza Escuro / Preto */
+  --text-dark: #ffffff; /* branco */
+  --card-bg-dark: #2a2634; /* tom escuro neutro */
+  --border-dark: #666666; /* cinza Médio */
+  --input-bg-dark: #00000066; /* preto transparente */
+  --response-bg-dark: rgba(0, 0, 0, 0.4); /* preto transparente mais forte */
+  --response-border-dark: #43E7AD; /* verde menta vibrante */
+}
+
+/* BODY LIGHT (padrão) */
+body {
+  background: var(--bg-light);
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
+  line-height: 160%;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+
+/* BODY DARK */
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* HEADER FIXO NO TOPO */
+header {
+  width: 100%;
+  background-color: var(--card-bg-light);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+body.dark header {
+  background-color: var(--card-bg-dark);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.7);
+}
+
+.header-content {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* LOGO + TÍTULO */
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.branding img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  
+}
+
+.branding h1 {
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  color: inherit;
+}
+
+/* botão toggle*/
+.theme-toggle {
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+  padding: 0;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle:hover {
+  background: #802bb1; /* roxo mais escuro */
+}
+
+.theme-toggle svg {
+  stroke: white;
+  width: 22px;
+  height: 22px;
+  transition: stroke 0.3s ease;
+  display: block;
+}
+
+main {
+  max-width: 36rem;
+  width: 90%;
+  margin: 4rem auto 3rem;
+}
+
+section {
+  background-image: linear-gradient(
+    90deg,
+    #9933cc 0%,
+    #66cc99 100%
+  );
+  border-radius: 0.625rem;
+  padding-top: 4px;
+}
+
+section > div {
+  padding: 2rem;
+  padding-top: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--card-bg-light);
+  transition: background-color 0.3s ease;
+}
+
+body.dark section > div {
+  background-color: var(--card-bg-dark);
+}
+
+section p {
+  margin-top: 0.75rem;
+  letter-spacing: -0.18px;
+  color: inherit;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+#apiKey,
+#gameSelect {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.675rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background-color: var(--input-bg-light);
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
+}
+
+#apiKey {
+  grid-column: 1 / 2;
+}
+
+#gameSelect {
+  grid-column: 2 / 3;
+}
+
+#questionInput {
+  grid-column: 1 / 3;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.675rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background-color: var(--input-bg-light);
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  grid-column: 1 / 3;
+  width: 100%;
+  padding: 0.675rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12px;
+  background-image: var(--button-gradient);
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 1rem rgba(255, 248, 107, 0.2);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  color: black;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Dark mode inputs */
+body.dark #apiKey,
+body.dark #gameSelect,
+body.dark #questionInput {
+  background-color: var(--input-bg-dark);
+  color: var(--text-dark);
+}
+
+/* RESPOSTA DA IA */
+#aiResponse {
+  background: var(--response-bg-light);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  border-left: 4px solid var(--response-border-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark #aiResponse {
+  background: var(--response-bg-dark);
+  border-left-color: var(--response-border-dark);
+}
+
+#aiResponse ul {
+  padding-left: 1.5rem;
+  opacity: 0.8;
+}
+
+#aiResponse p {
+  color: inherit;
+}
+
+.hidden {
+  display: none;
+}
+
+.loading {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 480px) {
+  header {
+    padding: 1rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .branding {
+    justify-content: center;
+  }
+
+  .theme-toggle {
+    margin-left: 0;
+  }
+  
+  form {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 0.85rem;
+  }
+
+  #apiKey,
+  #gameSelect,
+  #questionInput,
+  button {
+    grid-column: 1 / 2;
+    width: 100%;
+  }
+}
